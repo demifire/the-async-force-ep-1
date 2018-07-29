@@ -1,9 +1,6 @@
 console.log('App.js connected');
 
 let oReq = new XMLHttpRequest()
-
-//Modern would be JSONHTTPRequest()
-
 oReq.addEventListener("load", function(res){
     console.log('this is a res', res);
     console.log('this is the res.currentTarget', res.currentTarget);
@@ -50,6 +47,26 @@ oReq.addEventListener("load", function(res){
                 movieItem.innerHTML = movieArr[i].title;
                 filmList.appendChild(filmItem);
                 filmItem.appendChild(movieItem);
+                let planetHeader = document.createElement('h4');
+                planetHeader.innerHTML = 'Planets';
+                movieItem.appendChild(planetHeader);
+                let planetList = document.createElement('ul');
+                planetList.className = 'filmPlanets';
+                planetHeader.appendChild(planetList);
+                for(let j=0;j<movieArr[i].planets.length;j++){
+                    let planetItem = document.createElement('li');
+                    planetItem.className = 'planet';
+                    let moviePlanets = document.createElement('h5');
+                    moviePlanets.className = 'planetName';
+                    let planetNameReq = new XMLHttpRequest();
+                    planetNameReq.addEventListener("load",function(res){
+                        moviePlanets.innerHTML = JSON.parse(res.currentTarget.response).name;
+                    })
+                    planetNameReq.open('GET', movieArr[i].planets[j])
+                    planetNameReq.send();
+                    planetList.appendChild(planetItem);
+                    planetItem.appendChild(moviePlanets);
+                }
             }
         })
         oReq3.open('GET', 'https://swapi.co/api/films/')
@@ -58,16 +75,8 @@ oReq.addEventListener("load", function(res){
     oReq2.open('GET', 'https://swapi.co/api/people/14/')
     oReq2.send();
 });
-// Load is an event that triggers when the data comes back
-
 oReq.open('GET', 'https://swapi.co/api/people/4')
 oReq.send();
 
 
-// oReq2.open('GET', 'https://swapi.co/api/films/2/')
-// oReq2.send();
-
-// oReq2.addEventListener("load", function(res){
-//     console.log('response', JSON.parse(res.currentTarget.response))
-// })
 
