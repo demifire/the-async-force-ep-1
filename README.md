@@ -13,7 +13,7 @@ An **async** Exercise using **client side** XHR accessing the swapi API at https
 
    _the instructions below will mention ids and classes from index.html, study that document_
 
-  1. Get a Person object from the SWAPI, https://swapi.co/api/people/4/
+  1. Get a Person object from the SWAPI, /https://swapi.co/api/people/4
       - fill in `person4Name` with the value of Person's `name`
       - fill in `person4HomeWorld` with the value of Person's `homeworld` (name)
   1. Get a Person object from the SWAPI, https://swapi.co/api/people/14/
