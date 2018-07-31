@@ -1,5 +1,71 @@
 console.log('App.js connected');
 
+// Sets the number of stars we wish to display
+const numStars = 100;
+
+// For every star we want to display
+for (let i = 0; i < numStars; i++) {
+    let star = document.createElement("div");
+    star.className = "star";
+    var xy = getRandomPosition();
+    star.style.top = xy[0] + 'px';
+    star.style.left = xy[1] + 'px';
+    star.style.zIndex = -1;
+    document.body.append(star);
+}
+
+// Gets random x, y values based on the size of the container
+function getRandomPosition() {
+    var y = window.innerWidth;
+    var x = window.innerHeight;
+    var randomX = Math.floor(Math.random() * x);
+    var randomY = Math.floor(Math.random() * y);
+    return [randomX, randomY];
+}
+
+(function () {
+
+    var audio = new Audio("https://s.cdpn.io/1202/Star_Wars_original_opening_crawl_1977.ogg");
+    audio.oncanplaythrough = function () {
+
+        const container = document.createElement('div');
+        container.id = "scroll-container";
+        document.body.appendChild(container);
+        const intro = document.createElement('section');
+        intro.className = 'intro';
+        intro.id = 'intro';
+        let myImg = new Image;
+        myImg.src = 'pics/wat.jpg';
+        myImg.className = 'myWat';
+        intro.innerHTML = 'Long long ago, in a galaxy far far away, on a timeline so confuse wat';
+        container.appendChild(myImg);
+        container.appendChild(intro);
+        const logo = document.createElement('section');
+        logo.className = 'logo';
+        logo.id = 'logo';
+        logo.innerHTML = 'STAR WARS'
+        container.appendChild(logo);
+        const board = document.createElement('div');
+        board.id = 'board'; 
+        container.appendChild(board);
+        content = document.createElement('div');
+        content.id = 'content';
+        board.appendChild(content);
+        content.appendChild(main);
+
+        document.getElementById("scroll-container").style.display = "block";
+        audio.play();
+        setTimeout(function(){
+            document.getElementById("scroll-container").style.display = "none";
+            getData();
+         }, 95000);
+    };
+})();
+
+function getData(){
+
+theTitle.innerHTML = 'The Async Force Ep 1';
+
 const firstRequest = newReq('https://swapi.co/api/people/4');
 firstRequest.addEventListener("load", function(res){
 
@@ -51,6 +117,8 @@ firstRequest.addEventListener("load", function(res){
     });
 });
 
+document.body.appendChild(main2);
+
 function newElem(elem, myClass, parent, guts){
     const newElement = document.createElement(elem);
     newElement.className = myClass;
@@ -66,4 +134,8 @@ function newReq(url){
     newRequest.open('GET', url);
     newRequest.send();
     return newRequest
+}
+
+let stylesheet = document.styleSheets[0];
+stylesheet.disabled = true;
 }
