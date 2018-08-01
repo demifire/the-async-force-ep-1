@@ -23,8 +23,9 @@ function getRandomPosition() {
     return [randomX, randomY];
 }
 
-(function () {
+document.addEventListener('click',function starwars() {
 
+    document.removeEventListener('click',starwars);
     var audio = new Audio("https://s.cdpn.io/1202/Star_Wars_original_opening_crawl_1977.ogg");
     audio.oncanplaythrough = function () {
 
@@ -54,13 +55,14 @@ function getRandomPosition() {
         content.appendChild(main);
 
         document.getElementById("scroll-container").style.display = "block";
+        document.getElementById("main").style.display = "block";
         audio.play();
         setTimeout(function(){
             document.getElementById("scroll-container").style.display = "none";
             getData();
          }, 95000);
     };
-})();
+});
 
 function getData(){
 

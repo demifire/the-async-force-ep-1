@@ -149,6 +149,7 @@ p {
     text-align: center;
     color: #FFFF82;
     width: 100%;
+    display: none;
 }
 
 #main2 {
