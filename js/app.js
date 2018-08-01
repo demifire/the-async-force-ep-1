@@ -60,7 +60,7 @@ document.addEventListener('click',function starwars() {
         setTimeout(function(){
             document.getElementById("scroll-container").style.display = "none";
             getData();
-         }, 1000);
+         }, 96000);
     };
 });
 
@@ -138,7 +138,10 @@ function newReq(url){
     return newRequest
 }
 
-let stylesheet = document.styleSheets[0];
-stylesheet.disabled = true;
+// let stylesheet = document.styleSheets[0];
+// stylesheet.disabled = true;
 
+for ( i=0; i<document.styleSheets.length; i++) {
+    void(document.styleSheets.item(i).disabled=true);
+}
 }
