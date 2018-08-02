@@ -38,7 +38,7 @@ document.addEventListener('click',function starwars() {
         let myImg = new Image;
         myImg.src = 'pics/wat.jpg';
         myImg.className = 'myWat';
-        intro.innerHTML = 'Long long ago, in a galaxy far far away, on a timeline so confuse wat';
+        intro.innerHTML = "Long long ago, in a galaxy far far away, on a timeline so confusing, it'll make you say '...wat'";
         container.appendChild(myImg);
         container.appendChild(intro);
         const logo = document.createElement('section');
